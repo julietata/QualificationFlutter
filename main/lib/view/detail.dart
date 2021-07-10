@@ -5,13 +5,29 @@ import 'package:main/view/itempage.dart';
 import 'package:main/view/login.dart';
 import 'package:main/view/navigationbar.dart';
 
-class ListDetailPage extends StatelessWidget {
+class ListDetailPage extends StatefulWidget {
+  
   String img;
   String name;
   String price;
   String desc;
 
   ListDetailPage(this.img, this.name, this.price, this.desc);
+  
+  @override
+  State<StatefulWidget> createState() {
+    return DetailState(img, name, price, desc);
+  }
+}
+
+class DetailState extends State<ListDetailPage>{
+
+  String img;
+  String name;
+  String price;
+  String desc;
+
+  DetailState(this.img, this.name, this.price, this.desc);
 
   void homePressed(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (builder) {
@@ -41,8 +57,10 @@ class ListDetailPage extends StatelessWidget {
       );
     }
     else {
-      reviews.add(new Review(name, _ctrlComment.text, globals.username));
+      setState(() {
+        reviews.add(new Review(name, _ctrlComment.text, globals.username));
       _ctrlComment.text = "";
+      });
     }
   }
 
@@ -64,6 +82,7 @@ class ListDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    temp.clear();
     for (var i = 0; i < reviews.length; i++){
       if (reviews[i].product == name){
         temp.add(reviews[i]);

@@ -69,7 +69,7 @@ class HomePageState extends State<HomePage> {
                 autoPlayInterval: Duration(seconds: 3)
               )
             ),
-            Container(child: Text('geLAto is a famous ice cream store in town.'), padding: const EdgeInsets.all(20),)
+            Container(child: Text('geLAto is a famous gelato place in town. Gelato is a frozen dessert of Italian origin. It is made with a base of 3.25% butterfat whole milk and sugar. It is generally lower in fat than other styles of frozen desserts.'), padding: const EdgeInsets.all(20),)
           ]
         )
       ),
